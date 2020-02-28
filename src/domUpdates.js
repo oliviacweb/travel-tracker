@@ -5,10 +5,10 @@ const domFunctionality = {
       let userIdentification = $('.user').val();
       let userPassword = $('.pword').val();
       if(userIdentification === 'agency' && userPassword === 'travel2020') {
-        console.log('agent')
+        $('.main-page').html('<h1>Hello, agent<h1>')
       }
       else if(userIdentification === `traveler${traveler.id}` && userPassword === 'travel2020') {
-        console.log('heyo')
+        $('.main-page').html(`<h1>Hello, ${traveler.name}<h1>`)
       }
     })
   }
