@@ -9,7 +9,8 @@ import './css/base.scss';
 // import './css/style.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/turing-logo.png';
+import domFunctionality from './domUpdates';
 
 let travelersData;
 let tripsData;
@@ -26,11 +27,16 @@ let tripsData;
 
 
 
- Promise.all([travelersData, tripsData])
+ Promise.all([fetchTravelersData, fetchTripsData])
     .then(response => {
       let dataObj = {};
       dataObj.travelersData = response[0];
       dataObj.tripsData = response[1];
       return dataObj
     })
+    .then(dataObj => {
+      $('.submit-button').click((event) => {
+      event.preventDefault();
+      domFunctionality.validateUser(event, dataObj)
+    })})
     .catch(error => console.log(error.message));
